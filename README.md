@@ -1,28 +1,54 @@
-# MyApp
+# 1、安装nodejs。
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
+目前长期支持的稳定版本是6.x，开发版本是8.x  
 
-## Development server
+推荐使用稳定版本6.x，以免报错不好处理  
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+如果嫌弃官网太慢，可以在http://nodejs.cn/download/下载，这里面还有阿里云的镜像。  
 
-## Code scaffolding
+最新稳定版本下载地址：
+https://nodejs.org/dist/v6.11.3/node-v6.11.3-win-x64.zip  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+配置环境变量：`NODE_HOME=node安装目录`，`path=%NODE_HOME%`;  
 
-## Build
+查看版本： 
+`node -v`  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+`npm -v`
 
-## Running unit tests
+# 2、配置npm
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+配置npm的镜像为淘宝地址。国外太慢。  
 
-## Running end-to-end tests
+`npm config set registry https://registry.npm.taobao.org`  
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+验证一下：  
 
-## Further help
+`npm config get registry` 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# 3、安装@angular/cli
+
+CLI（command-line interface，命令行界面），是angular的命令行工具，它的最大好处是简化开发。  
+
+比如你新建一个用户模块，使用它可以帮你马上建立好js,css,template模块。它还有很多其它用户比如启动http服务器等
+安装：  
+
+`npm install -g @angular/cli`  
+
+# 4、创建angular项目
+
+创建项目：  
+
+https://angular.cn/guide/quickstart  
+
+`cd 工作目录`  
+
+`ng new 项目名称`  
+
+`cd 项目名称`  
+
+如果项目之前已经存在  
+
+`npm install`  
+
+`ng serve --open`即可在浏览器中打开项目
