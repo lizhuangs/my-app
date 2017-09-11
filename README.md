@@ -11,7 +11,8 @@ https://nodejs.org/dist/v6.11.3/node-v6.11.3-win-x64.zip
 
 配置环境变量：`NODE_HOME=node安装目录`，`path=%NODE_HOME%`;  
 
-查看版本： 
+查看版本：  
+
 `node -v`  
 
 `npm -v`
