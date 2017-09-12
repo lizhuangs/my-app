@@ -1,0 +1,13 @@
+<div id="search-component">
+    <h4>Hero Search</h4>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+    <div>
+        <div *ngFor="let hero of heroes | async" (click)="gotoDetail(hero)" class="search-result">
+            {{hero.name}}
+        </div>
+    </div>
+</div>
+
+<!--
+  *ngFor不能用可观察对象做任何事，除非我们在它后面跟一个async pipe (AsyncPipe)。 这个async管道会订阅到这个可观察对象，并且为*ngFor生成一个英雄数组
+ -->
