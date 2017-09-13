@@ -11,12 +11,11 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { PageNotFoundComponent } from './not-found.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { DialogService } from './dialog.service';
 import { ComposeMessageComponent } from './compose-message.component';
-import { AdminModule } from './admin/admin.module';
 import { Router } from '@angular/router';
 import { LoginComponent } from './login.component';
+import { LoginRoutingModule } from './login-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,10 +27,9 @@ import { LoginComponent } from './login.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    HeroesModule,
     BrowserAnimationsModule,
-    CrisisCenterModule,
-    AdminModule,
+    HeroesModule,
+    LoginRoutingModule,
     // InMemoryWebApiModule将Http客户端默认的后端服务,替换成了内存 Web API服务
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
