@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -11,8 +11,10 @@ import { Router } from '@angular/router';
 export class HeroesComponent implements OnInit {
   heroes: Hero[];
   selectedHero: Hero;
+  private selectedId: number;
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private heroService: HeroService) { }
 
   ngOnInit(): void {
@@ -39,14 +41,24 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.route.paramMap
+      .switchMap((params: ParamMap) => {
+        // (+) before `params.get()` turns the string into a number
+        this.selectedId = +params.get('id');
+        // console.log('this.selectedId:' + this.selectedId);
+        return this.heroService.getHeroes();
+      }).subscribe(heroes => this.heroes = heroes);
   }
 
   onSelect(hero: Hero): void {
+    this.selectedId = hero.id;
     this.selectedHero = hero;
   }
 
+  isSelected(hero: Hero) { return hero.id === this.selectedId; }
+
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    this.router.navigate(['/hero', this.selectedHero.id]);
   }
 }
