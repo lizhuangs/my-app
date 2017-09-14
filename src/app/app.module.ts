@@ -16,6 +16,7 @@ import { ComposeMessageComponent } from './compose-message.component';
 import { Router } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
+import { HeroFormModule } from './form/hero-form.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { LoginRoutingModule } from './login-routing.module';
     HttpModule,
     BrowserAnimationsModule,
     HeroesModule,
+    HeroFormModule,
     LoginRoutingModule,
     // InMemoryWebApiModule将Http客户端默认的后端服务,替换成了内存 Web API服务
     InMemoryWebApiModule.forRoot(InMemoryDataService),

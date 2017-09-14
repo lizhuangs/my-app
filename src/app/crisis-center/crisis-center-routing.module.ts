@@ -21,7 +21,9 @@ const crisisCenterRoutes: Routes = [
           {
             path: ':id',
             component: CrisisDetailComponent,
-            canDeactivate: [CanDeactivateGuard],
+            canDeactivate: [CanDeactivateGuard], // 处理未保存的更改
+            // 预先获取组件数据 导航前预先加载路由信息
+            // 好处1、当网络不好时不会显示空数据给用户 2、如果数据为空，可以提前处理而不用再跳转去渲染组件了
             resolve: {
               crisis: CrisisDetailResolver
             }

@@ -18,6 +18,10 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
+    path: 'form',
+    loadChildren: 'app/form/hero-form.module#HeroFormModule'
+  },
+  {
     path: 'crisis-center',
     loadChildren: 'app/crisis-center/crisis-center.module#CrisisCenterModule',
     data: { preload: true }
@@ -34,7 +38,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes,
     {
       preloadingStrategy: SelectivePreloadingStrategy
-      // enableTracing: true //debugging purposes only
+      // ,enableTracing: true //debugging purposes only
     }
   )],
   exports: [RouterModule],
@@ -44,3 +48,12 @@ const routes: Routes = [
   ]
 })
 export class AppRoutingModule { }
+
+/*
+路由器支持多种守卫：
+1. 用CanActivate来处理导航到某路由的情况。
+2. 用CanActivateChild处理导航到子路由的情况。
+3. 用CanDeactivate来处理从当前路由离开的情况。
+4. 用Resolve在路由激活之前获取路由数据。
+5. 用CanLoad来处理异步导航到某特性模块的情况。
+ */

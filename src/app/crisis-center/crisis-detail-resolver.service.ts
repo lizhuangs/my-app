@@ -11,8 +11,9 @@ export class CrisisDetailResolver implements Resolve<Crisis> {
   constructor(private cs: CrisisService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Crisis> {
+    // 测试发现如果这里实际联网查询很慢的话，界面会卡住
     let id = route.paramMap.get('id');
-
+    console.log('CrisisDetailResolver' + id);
     return this.cs.getCrisis(id).then(crisis => {
       if (crisis) {
         return crisis;

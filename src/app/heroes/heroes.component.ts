@@ -41,6 +41,9 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
+    // 将subscribe改成then即是将rxjs调用改为promise方式调用
+    // toPromise操作符把Observable直接转换成Promise对象
+
     // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
     this.route.paramMap
       .switchMap((params: ParamMap) => {
