@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0",
+    "configurations": [{
+        "type": "chrome",
+        "request": "launch",
+        "name": "Chrome",
+        "url": "http://localhost:4200",
+        "runtimeExecutable": "D:\\Program Files\\Google\\chrome\\chrome.exe",
+        "webRoot": "${workspaceRoot}"
+    }]
+}

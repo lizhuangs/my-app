@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: 'app/form/hero-form.module#HeroFormModule'
   },
   {
+    path: 'http',
+    loadChildren: 'app/http/http-form.module#HttpFormModule'
+  },
+  {
     path: 'crisis-center',
     loadChildren: 'app/crisis-center/crisis-center.module#CrisisCenterModule',
     data: { preload: true }

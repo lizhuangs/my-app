@@ -8,7 +8,13 @@
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "comment": "npm install -g  json-server && npm install -g concurrently",
+        "json_server": "json-server db.json ",
+        "json-server comment": "下面这个routes不知道怎么访问待解决",
+        "jsonroute_server": "json-server db.json --routes routes.json --port 3000 ",
+        "ngo": "ng serve -o --port 4200 ",
+        "go": "concurrently \"npm run json_server\" \"npm run ngo\""
     },
     "private": true,
     "dependencies": {

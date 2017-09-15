@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService } from './in-memory-data.service';
 import { PageNotFoundComponent } from './not-found.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +17,11 @@ import { Router } from '@angular/router';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { HeroFormModule } from './form/hero-form.module';
+import { HttpFormModule } from './http/http-form.module';
+import { Utils } from './providers/Utils';
+import { GlobalData } from './providers/GlobalData';
+import { Logger } from './providers/Logger';
+import { HttpService } from './providers/HttpService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +36,10 @@ import { HeroFormModule } from './form/hero-form.module';
     BrowserAnimationsModule,
     HeroesModule,
     HeroFormModule,
+    HttpFormModule,
     LoginRoutingModule,
     // InMemoryWebApiModule将Http客户端默认的后端服务,替换成了内存 Web API服务
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
     /*  RouterModule.forRoot([
        {
@@ -42,11 +48,16 @@ import { HeroFormModule } from './form/hero-form.module';
        }
      ]) */
   ],
-  providers: [DialogService],
+  providers: [
+    DialogService,
+    HttpService,
+    Utils,
+    GlobalData,
+    Logger],
   bootstrap: [AppComponent]
 })
 export class AppModule {// Diagnostic only: inspect router configuration
   constructor(router: Router) {
-    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+    // console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
   }
 }
