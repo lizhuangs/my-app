@@ -1,4 +1,7 @@
 {
+    "/api/heroes": "/heroes",
+    "/api/heroes/:id": "/heroes/:id",
+    "/api/heroes/?name=:name": "/heroes/?name=:name",
     "/api/*": "/$1",
     "/:resource/:id/show": "/:resource/:id",
     "/posts/:category": "/posts?category=:category",

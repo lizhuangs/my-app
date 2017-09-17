@@ -7,22 +7,26 @@ import {
   Http, Response, Headers, RequestOptions, URLSearchParams,
   RequestOptionsArgs, RequestMethod
 } from '@angular/http';
+import { GlobalData } from '../providers/GlobalData';
 @Component({
   selector: 'app-http-form-template',
   templateUrl: './http-form-template.component.html',
   styleUrls: ['../form/forms.css', '../../assets/bower_components/bootstrap/css/bootstrap.min.css']
 })
 export class HttpFormTemplateComponent implements OnInit {
+  hero_url = '/heroes/1';
+  power_url = '/powers';
   constructor(
     private http: Http,
     private httpService: HttpService,
-    private logger: Logger
-  ) { }
+    private logger: Logger,
+    globalData: GlobalData) {
+    this.hero_url = globalData.api_url + this.hero_url;
+    this.power_url = globalData.api_url + this.power_url;
+  }
   powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
   hero: Hero = { id: null, name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0] };
   // hero = { name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0] };
-  hero_url = 'http://localhost:3000/heroes/1';
-  power_url = 'http://localhost:3000/powers';
   param = { name: 'test' };
 
   ngOnInit(): void {

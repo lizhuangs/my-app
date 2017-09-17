@@ -10,6 +10,7 @@ export class GlobalData {
   private _username: string; // 用户名
   private _fullName: string; // 姓名
   private _token: string; // token
+  private _api_url = 'http://localhost:3000'; // _api_url
 
   // 设置http请求是否显示loading,注意:设置为true,接下来的请求会不显示loading,请求执行完成会自动设置为false
   private _showLoading: boolean = true;
@@ -39,6 +40,10 @@ export class GlobalData {
 
   set fullName(value: string) {
     this._fullName = value;
+  }
+
+  get api_url(): string {
+    return this._api_url;
   }
 
   get token(): string {

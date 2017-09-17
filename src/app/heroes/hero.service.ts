@@ -4,16 +4,21 @@ import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { GlobalData } from '../providers/GlobalData';
 @Injectable()
 export class HeroService {
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private heroesUrl = '/api/heroes';  // URL to web api
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    globalData: GlobalData) {
+    this.heroesUrl = globalData.api_url + this.heroesUrl;
+  }
 
   getHeroes(): Promise<Hero[]> {
     // toPromise操作符把Observable直接转换成Promise对象
     return this.http.get(this.heroesUrl).toPromise()
-      .then(response => response.json().data as Hero[])
+      .then(response => response.json() as Hero[])
       .catch(this.handleError);
   }
 
@@ -25,7 +30,7 @@ export class HeroService {
   getHero(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url).toPromise()
-      .then(response => response.json().data as Hero)
+      .then(response => response.json() as Hero)
       .catch(this.handleError);
   }
 
@@ -42,7 +47,7 @@ export class HeroService {
     return this.http
       .post(this.heroesUrl, JSON.stringify({ name: name }), { headers: this.headers })
       .toPromise()
-      .then(res => res.json().data as Hero)
+      .then(res => res.json() as Hero)
       .catch(this.handleError);
   }
 
