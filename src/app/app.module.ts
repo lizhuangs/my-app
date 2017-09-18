@@ -39,7 +39,7 @@ import { HttpService } from './providers/HttpService';
     HttpFormModule,
     LoginRoutingModule,
     // InMemoryWebApiModule将Http客户端默认的后端服务,替换成了内存 Web API服务
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
     /*  RouterModule.forRoot([
        {

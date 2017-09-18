@@ -55,4 +55,8 @@ export class HeroDetailComponent implements OnInit {
     this.gotoHeroes();
     // this.location.back();
   }
+
+  onKeyUpEnter(name: string): void {
+    this.hero.name = name;
+  }
 }

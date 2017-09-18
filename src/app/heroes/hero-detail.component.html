@@ -6,6 +6,10 @@
         <label>name: </label>
         <input [(ngModel)]="hero.name" placeholder="name" />
     </div>
+    <div>
+        <label>Enter事件: </label>
+        <input #heroDetail (keyup.enter)="onKeyUpEnter(heroDetail.value)">
+    </div>
     <button (click)="save()">Save</button>
     <button (click)="goBack()">Back</button>
 </div>
