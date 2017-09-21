@@ -53,3 +53,88 @@ https://angular.cn/guide/quickstart
 `npm install`  
 
 `ng serve --open`即可在浏览器中打开项目
+
+
+### 简单说明：
+package.json是webpack的配置文件，类似于maven和pom.xml 
+
+入口文件main.ts,一般加载主模块AppModule 
+
+结构说明具体看这里:https://angular.cn/guide/setup-systemjs-anatomy
+
+#### ng serve 启动项目
+
+### 模块module
+	https://angular.cn/guide/ngmodule
+	Angular 模块是一个由@NgModule装饰器提供元数据的类，元数据包括：
+	声明哪些组件、指令、管道属于该模块。
+	公开某些类，以便其它的组件模板可以使用它们。
+	导入其它模块，从其它模块中获得本模块所需的组件、指令和管道。
+	在应用程序级提供服务，以便应用中的任何组件都能使用它。
+
+### 组件component
+	重点
+	生命周期:https://angular.cn/guide/lifecycle-hooks 
+
+	组件交互:https://angular.cn/guide/component-interaction
+
+### 路由router
+https://angular.cn/tutorial/toh-pt5
+https://angular.cn/guide/router 
+
+重点：https://angular.cn/guide/router#canactivate-要求认证
+
+
+### 服务service
+https://angular.cn/tutorial/toh-pt4#注入-heroservice
+
+### 指令directive
+在 Angular 中有三种类型的指令：
+
+组件 — 拥有模板的指令，一个组件对应一个selector 
+
+结构型指令 — 通过添加和移除 DOM 元素改变 DOM 布局的指令，ngIf,ngFor 
+
+属性型指令 — 改变元素、组件或其它指令的外观和行为的指令。一般是自定义的，我们使用的第三方UI基本都有这个 
+
+
+### 表单
+模板驱动表单https://angular.cn/guide/forms，一般就是在html界面加上相应的属性就直接验证了 
+
+响应式表单https://angular.cn/guide/reactive-forms，在ts中动态验证
+
+### 其它:
+管道pipe
+动画Animations
+
+### 学习网站:
+https://angular.cn/
+angular中文官网，入门学习从这里看起
+
+
+https://valor-software.com/ngx-bootstrap/
+angular4+bootstrap，目前用得最多的UI 
+
+https://valor-software.com/ng2-table/
+table 
+
+https://github.com/xieziyu/ngx-echarts
+angular+echarts
+
+
+http://es6.ruanyifeng.com/
+ECMAScript 6 入门,主要看一下箭头函数
+
+https://www.tslang.cn/docs/handbook/basic-types.html
+typescript官网
+
+
+http://reactivex.io/rxjs/manual/overview.html
+rxjs官网
+
+https://doc.webpack-china.org/configuration/
+webpack官网
+
+
+http://blog.csdn.net/hj7jay/article/details/51907504
+springmvc token验证示例
