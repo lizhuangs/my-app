@@ -65,7 +65,8 @@
 	组件交互:https://angular.cn/guide/component-interaction
 
 ### 路由router
-https://angular.cn/tutorial/toh-pt5
+https://angular.cn/tutorial/toh-pt5 
+
 https://angular.cn/guide/router 
 
 重点：https://angular.cn/guide/router#canactivate-要求认证
@@ -82,12 +83,17 @@ https://angular.cn/tutorial/toh-pt4#注入-heroservice
 
 
 ### 表单
-模板驱动表单https://angular.cn/guide/forms，一般就是在html界面加上相应的属性就直接验证了 
+模板驱动表单https://angular.cn/guide/forms 
 
-响应式表单https://angular.cn/guide/reactive-forms，在ts中动态验证
+一般就是在html界面加上相应的属性就直接验证了 
+
+响应式表单https://angular.cn/guide/reactive-forms 
+
+在ts中动态验证
 
 ### 其它:
-管道pipe
+管道pipe 
+
 动画Animations
 
 ### 学习网站:
