@@ -1,15 +1,11 @@
 # 1、安装nodejs。
 
-目前长期支持的稳定版本是6.x，开发版本是8.x  
-
-推荐使用稳定版本6.x，以免报错不好处理  
-
-如果嫌弃官网太慢，可以在http://nodejs.cn/download/下载，这里面还有阿里云的镜像。  
-
-最新稳定版本下载地址：
-https://nodejs.org/dist/v6.11.3/node-v6.11.3-win-x64.zip  
-
-配置环境变量：`NODE_HOME=node安装目录`，`path=%NODE_HOME%`;  
+	目前长期支持的稳定版本是6.x，开发版本是8.x  
+	推荐使用稳定版本6.x，以免报错不好处理  
+	如果嫌弃官网太慢，可以在http://nodejs.cn/download/下载，这里面还有阿里云的镜像。
+	最新稳定版本下载地址：
+	https://nodejs.org/dist/v6.11.3/node-v6.11.3-win-x64.zip  
+	配置环境变量：`NODE_HOME=node安装目录`，`path=%NODE_HOME%`;  
 
 查看版本：  
 
@@ -29,38 +25,28 @@ https://nodejs.org/dist/v6.11.3/node-v6.11.3-win-x64.zip
 
 # 3、安装@angular/cli
 
-CLI（command-line interface，命令行界面），是angular的命令行工具，它的最大好处是简化开发。  
+	CLI（command-line interface，命令行界面），是angular的命令行工具，它的最大好处是简化开发。  
 
-比如你新建一个用户模块，使用它可以帮你马上建立好js,css,template模块。它还有很多其它用户比如启动http服务器等
+	比如你新建一个用户模块，使用它可以帮你马上建立好js,css,template模块。它还有很多其它用户比如启动http服务器等
 安装：  
 
 `npm install -g @angular/cli`  
 
 # 4、创建angular项目
 
-创建项目：  
-
-https://angular.cn/guide/quickstart  
-
-`cd 工作目录`  
-
-`ng new 项目名称`  
-
-`cd 项目名称`  
-
-如果项目之前已经存在  
-
-`npm install`  
-
-`ng serve --open`即可在浏览器中打开项目
+	创建项目：  https://angular.cn/guide/quickstart  
+	`cd 工作目录`  
+	`ng new 项目名称`  
+	`cd 项目名称`  
+	如果项目之前已经存在  
+	`npm install`  
+	`ng serve --open`即可在浏览器中打开项目
 
 
 ### 简单说明：
-package.json是webpack的配置文件，类似于maven和pom.xml 
-
-入口文件main.ts,一般加载主模块AppModule 
-
-结构说明具体看这里:https://angular.cn/guide/setup-systemjs-anatomy
+	package.json是webpack的配置文件，类似于maven和pom.xml 
+	入口文件main.ts,一般加载主模块AppModule 
+	结构说明具体看这里:https://angular.cn/guide/setup-systemjs-anatomy
 
 #### ng serve 启动项目
 
@@ -89,13 +75,10 @@ https://angular.cn/guide/router
 https://angular.cn/tutorial/toh-pt4#注入-heroservice
 
 ### 指令directive
-在 Angular 中有三种类型的指令：
-
-组件 — 拥有模板的指令，一个组件对应一个selector 
-
-结构型指令 — 通过添加和移除 DOM 元素改变 DOM 布局的指令，ngIf,ngFor 
-
-属性型指令 — 改变元素、组件或其它指令的外观和行为的指令。一般是自定义的，我们使用的第三方UI基本都有这个 
+	在 Angular 中有三种类型的指令：
+	组件 — 拥有模板的指令，一个组件对应一个selector
+	结构型指令 — 通过添加和移除 DOM 元素改变 DOM 布局的指令，ngIf,ngFor
+	属性型指令 — 改变元素、组件或其它指令的外观和行为的		令。一般是自定义的，我们使用的第三方UI基本都有这个
 
 
 ### 表单
