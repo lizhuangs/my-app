@@ -1,3 +1,5 @@
+
+
 # 1、安装nodejs。
 
 	目前长期支持的稳定版本是6.x，开发版本是8.x  
@@ -61,7 +63,7 @@
 ### 组件component
 	重点
 	生命周期:https://angular.cn/guide/lifecycle-hooks 
-
+	
 	组件交互:https://angular.cn/guide/component-interaction
 
 ### 路由router
