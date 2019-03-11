@@ -10,11 +10,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "comment": "npm install -g  json-server && npm install -g concurrently",
-    "json_server": "json-server db.json ",
-    "json-server comment": "下面这个routes不知道怎么访问待解决",
-    "jsonroute_server": "json-server db.json --routes routes.json --port 3000 ",
+    "db": "json-server --watch db.json --routes routes.json",
+    "mockdb": "json-server --watch src/db.js --routes routes.json",
     "ngo": "ng serve -o --port 4200 ",
-    "go": "concurrently \"npm run json_server\" \"npm run ngo\""
+    "go": "concurrently \"npm run db\" \"npm run ngo\""
   },
   "private": true,
   "dependencies": {
@@ -29,6 +28,7 @@
     "@angular/platform-server": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "2.5.1",
+    "mockjs": "^1.0.1-beta3",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.20"
   },
