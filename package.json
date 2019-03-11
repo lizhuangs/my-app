@@ -9,9 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "comment": "npm install -g  json-server && npm install -g concurrently",
-    "db": "json-server --watch db.json --routes routes.json",
-    "mockdb": "json-server --watch src/db.js --routes routes.json",
+    "comment": "以下2个默认加载json-server.json",
+    "db": "json-server db.json",
+    "mockdb": "json-server db.js",
     "ngo": "ng serve -o --port 4200 ",
     "go": "concurrently \"npm run db\" \"npm run ngo\""
   },
