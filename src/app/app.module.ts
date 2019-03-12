@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 // Imports for loading & configuring the in-memory web api
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import {InMemoryDataService} from './in-memory-data.service';
+// import {InMemoryDataService} from './in-memory-data.service';
 import {PageNotFoundComponent} from './not-found.component';
 import {HeroesModule} from './heroes/heroes.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -22,6 +22,7 @@ import {Logger} from './providers/Logger';
 import {HttpService} from './providers/HttpService';
 import {HttpClientModule} from '@angular/common/http';
 import {MessageService} from './message.service';
+import {HeroService} from './heroes/hero.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {MessageService} from './message.service';
   providers: [
     DialogService,
     HttpService,
+    HeroService,
     Utils,
     GlobalData,
     Logger,

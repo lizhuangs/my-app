@@ -1,34 +1,30 @@
 /**
  * Created by yanxiaojun617@163.com on 12-27.
  */
-import { Injectable } from '@angular/core';
-import {
-  Http, Response, Headers, RequestOptions, URLSearchParams,
-  RequestOptionsArgs, RequestMethod
-} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpRequest, HttpParams, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
-import { Observable } from 'rxjs/Observable';
-import { TimeoutError } from 'rxjs/util/TimeoutError';
+import {Observable} from 'rxjs/Observable';
+import {TimeoutError} from 'rxjs/util/TimeoutError';
 import 'rxjs/add/operator/timeout';
-import { Utils } from './Utils';
-import { GlobalData } from './GlobalData';
-import { APP_SERVE_URL, REQUEST_TIMEOUT } from './Constants';
-import { Logger } from './Logger';
+import {Utils} from './Utils';
+import {GlobalData} from './GlobalData';
+import {APP_SERVE_URL, REQUEST_TIMEOUT} from './Constants';
+import {Logger} from './Logger';
 
 @Injectable()
 export class HttpService {
 
-  constructor(public http: Http,
-    private globalData: GlobalData,
-    public logger: Logger) {
+  constructor(public http: HttpClient,
+              private globalData: GlobalData,
+              public logger: Logger) {
   }
 
   /**
-  * 将对象转为查询参数
-  * @param paramMap
-  * @returns {URLSearchParams}
-  */
-  private static buildURLSearchParams(paramMap): URLSearchParams {
+   * 将对象转为查询参数
+   * @param paramMap
+   * @returns {URLSearchParams}
+   private static buildURLSearchParams2(paramMap): URLSearchParams {
     let params = new URLSearchParams();
     if (!paramMap) {
       return params;
@@ -36,19 +32,34 @@ export class HttpService {
     for (let key in paramMap) {
       let val = paramMap[key];
       if (val instanceof Date) {
-        val = Utils.dateFormat(val, 'yyyy-MM-dd hh:mm:ss')
+        val = Utils.dateFormat(val, 'yyyy-MM-dd hh:mm:ss');
+      }
+      params.set(key, val);
+    }
+    return params;
+  }*/
+
+  private static buildParams(paramMap): URLSearchParams {
+    const params = new HttpParams();
+    if (!paramMap) {
+      return params;
+    }
+    for (const key in paramMap) {
+      let val = paramMap[key];
+      if (val instanceof Date) {
+        val = Utils.dateFormat(val, 'yyyy-MM-dd hh:mm:ss');
       }
       params.set(key, val);
     }
     return params;
   }
 
-  public request(url: string, options: RequestOptionsArgs): Observable<Response> {
+  public request(method: string, url: string, params: HttpParams, header: HttpHeaders): Observable<Response> {
     url = Utils.formatUrl(url.startsWith('http') ? url : APP_SERVE_URL + url);
     this.optionsAddToken(options);
     return Observable.create(observer => {
       console.log('%c 请求前 %c', 'color:blue', '', 'url', url, 'options', options);
-      this.http.request(url, options).timeout(REQUEST_TIMEOUT).subscribe(res => {
+      this.http.request('POST', url, options).timeout(REQUEST_TIMEOUT).subscribe(res => {
         console.log('%c 请求成功 %c', 'color:green', '', 'url', url, 'options', options, 'res', res);
         if (res['_body'] === '') {
           res['_body'] = null;
@@ -62,10 +73,7 @@ export class HttpService {
   }
 
   public get(url: string, paramMap: any = null): Observable<Response> {
-    return this.request(url, new RequestOptions({
-      method: RequestMethod.Get,
-      search: HttpService.buildURLSearchParams(paramMap)
-    }));
+    return this.request(url, 'GET', HttpService.buildURLSearchParams(paramMap));
   }
 
   public post(url: string, body: any = {}): Observable<Response> {
@@ -122,6 +130,7 @@ export class HttpService {
       search: HttpService.buildURLSearchParams(paramMap).toString()
     }));
   }
+
   /**
    * 处理请求失败事件
    * @param url
@@ -162,12 +171,12 @@ export class HttpService {
 
   }
 
-  private optionsAddToken(options: RequestOptionsArgs): void {
-    let token = this.globalData.token;
-    if (options.headers) {
-      options.headers.append('Authorization', 'Bearer ' + token);
+  private optionsAddToken(header: HttpHeaders): void {
+    const token = this.globalData.token;
+    if (header) {
+      header.append('Authorization', 'Bearer ' + token);
     } else {
-      options.headers = new Headers({
+      header = new HttpHeaders({
         'Authorization': 'Bearer ' + token
       });
     }

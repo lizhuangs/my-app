@@ -1,13 +1,12 @@
 /* tslint:disable: member-ordering */
-import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../providers/HttpService';
-import { Logger } from '../providers/Logger';
-import { Hero } from '../heroes/hero';
-import {
-  Http, Response, Headers, RequestOptions, URLSearchParams,
-  RequestOptionsArgs, RequestMethod
-} from '@angular/http';
-import { GlobalData } from '../providers/GlobalData';
+import {Component, OnInit} from '@angular/core';
+import {HttpService} from '../providers/HttpService';
+import {Logger} from '../providers/Logger';
+import {Hero} from '../heroes/hero';
+import {HttpClient} from '@angular/common/http';
+import {GlobalData} from '../providers/GlobalData';
+import {HeroService} from '../heroes/hero.service';
+
 @Component({
   selector: 'app-http-form-template',
   templateUrl: './http-form-template.component.html',
@@ -16,22 +15,25 @@ import { GlobalData } from '../providers/GlobalData';
 export class HttpFormTemplateComponent implements OnInit {
   hero_url = '/heroes/1';
   power_url = '/powers';
+
   constructor(
-    private http: Http,
+    private http: HttpClient,
     private httpService: HttpService,
+    private heroService: HeroService,
     private logger: Logger,
     globalData: GlobalData) {
     this.hero_url = globalData.api_url + this.hero_url;
     this.power_url = globalData.api_url + this.power_url;
   }
+
   powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
-  hero: Hero = { id: null, name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0] };
+  hero: Hero = {id: null, name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0]};
   // hero = { name: 'Dr.', alterEgo: 'Dr. What', power: this.powers[0] };
-  param = { name: 'test' };
+  param = {name: 'test'};
 
   ngOnInit(): void {
     this.logger.log('ngOnInit', 'HttpFormTemplateComponent');
-    this.httpService.get(this.hero_url)
+    /*this.httpService.get(this.hero_url)
       .map((response: Response) => {
         this.hero = response.json() as Hero;
         console.log('用户信息:' + JSON.stringify(this.hero));
@@ -43,7 +45,9 @@ export class HttpFormTemplateComponent implements OnInit {
       error => {
         console.error(error);
       }
-      );
+    );*/
+    this.heroService.getHeroNew(1)
+      .subscribe(hero => this.hero = hero as Hero);
   }
 }
 

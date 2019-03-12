@@ -41,6 +41,14 @@ export class HeroService {
     return Promise.reject(error.message || error);
   }
 
+  getHeroNew(id: number): Observable<{} | Hero> {
+    const url = `${this.heroesUrl}/${id}`;
+    return this.http.get<Hero>(url).pipe(
+      tap(_ => this.log(`fetched hero id=${id}`)),
+      catchError(this.handleErrorNew<Hero>(`getHero id=${id}`))
+    );
+  }
+
   getHero(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url).toPromise()
