@@ -1,5 +1,8 @@
 /*----------------------------------------后台Api地址----------------------------------------*/
-export const APP_SERVE_URL = 'http://88.128.18.144:8081/api/';
+export const SERVER_URL = 'http://localhost';
+let PORT = ':3000';
+const CTX_PATH = '/api';
+export const BASE_URL = SERVER_URL + (PORT === ':80' ? '' : PORT) + CTX_PATH;
 
 /*----------------------------------------文件服务器地址----------------------------------------*/
 export const FILE_SERVE_URL = 'http://172.16.19.86/kit_file_server/';//文件服务:测试环境

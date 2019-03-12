@@ -1,22 +1,25 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {Hero} from './hero';
-import {HEROES} from './mock-heroes';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Hero } from './hero';
+import { HEROES } from './mock-heroes';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
-import {GlobalData} from '../providers/GlobalData';
-import {catchError, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
-import {MessageService} from '../message.service';
+import { GlobalData } from '../providers/GlobalData';
+import { catchError, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { MessageService } from '../message.service';
+import { HttpService } from '../providers/HttpService';
 
 @Injectable()
 export class HeroService {
   private heroesUrl = '/api/heroes';  // URL to web api
-  private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(
-    private http: HttpClient, globalData: GlobalData, private messageService: MessageService) {
+    private http: HttpClient, globalData: GlobalData,
+    private httpService: HttpService,
+    private messageService: MessageService) {
     this.heroesUrl = globalData.api_url + this.heroesUrl;
   }
 
@@ -25,7 +28,12 @@ export class HeroService {
     /*return this.http.get(this.heroesUrl).toPromise()
       .then(response => response.json() as Hero[])
       .catch(this.handleError);*/
-    return this.http.get(this.heroesUrl).toPromise() as Promise<Hero[]>;
+    // return this.http.get(this.heroesUrl).toPromise() as Promise<Hero[]>;
+    return this.httpService.request(
+      {
+        url: this.heroesUrl
+      }
+    ).toPromise() as Promise<Hero[]>;
   }
 
   getHeroesNew(): Observable<Hero[]> {
@@ -59,7 +67,7 @@ export class HeroService {
   update(hero: Hero): Promise<Hero> {
     const url = `${this.heroesUrl}/${hero.id}`;
     return this.http
-      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .put(url, JSON.stringify(hero), { headers: this.headers })
       .toPromise()
       .then(() => hero)
       .catch(this.handleError);
@@ -67,7 +75,7 @@ export class HeroService {
 
   create(name: string): Promise<Hero> {
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.heroesUrl, JSON.stringify({ name: name }), { headers: this.headers })
       .toPromise()
       .then()
       .catch(this.handleError);
@@ -75,7 +83,7 @@ export class HeroService {
 
   delete(id: number): Promise<void> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.delete(url, {headers: this.headers})
+    return this.http.delete(url, { headers: this.headers })
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
