@@ -1,11 +1,10 @@
-import {HttpClient} from '@angular/common/http';
-import {Hero} from './hero';
-import {GlobalData} from '../providers/GlobalData';
-import {catchError, map, tap} from 'rxjs/operators';
-import {MessageService} from '../message.service';
-import {of} from 'rxjs/observable/of';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { Hero } from './hero';
+import { GlobalData } from '../providers/GlobalData';
+import { catchError, map, tap } from 'rxjs/operators';
+import { MessageService } from '../message.service';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class HeroSearchService {
@@ -35,7 +34,7 @@ export class HeroSearchService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

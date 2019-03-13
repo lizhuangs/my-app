@@ -45,13 +45,12 @@ export class HeroesComponent implements OnInit {
     // toPromise操作符把Observable直接转换成Promise对象
 
     // this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-    this.route.paramMap
+    /* this.route.paramMap
       .switchMap((params: ParamMap) => {
-        // (+) before `params.get()` turns the string into a number
         this.selectedId = +params.get('id');
-        // console.log('this.selectedId:' + this.selectedId);
         return this.heroService.getHeroes();
-      }).subscribe(heroes => this.heroes = heroes);
+      }).subscribe(heroes => this.heroes = heroes); */
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
   onSelect(hero: Hero): void {

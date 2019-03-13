@@ -3,7 +3,8 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Location } from '@angular/common';
 import { HeroService } from './hero.service';
 import { Hero } from './hero';
-import 'rxjs/add/operator/switchMap';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { slideInDownAnimation } from '../animations';
 @Component({
@@ -33,8 +34,15 @@ export class HeroDetailComponent implements OnInit {
       this.heroService.getHero(+id)
         .then((hero: Hero) => this.hero = hero);
     */
-    this.route.paramMap
+    /* this.route.paramMap
       .switchMap((params: ParamMap) => this.heroService.getHero(+params.get('id')))
+      .subscribe(hero => this.hero = hero); */
+    /* this.hero = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.heroService.getHero(params.get('id')))
+    ); */
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
   save(): void {

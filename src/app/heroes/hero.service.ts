@@ -3,13 +3,12 @@ import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/toPromise';
 import { GlobalData } from '../providers/GlobalData';
 import { catchError, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { MessageService } from '../message.service';
 import { HttpService } from '../providers/HttpService';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class HeroService {
@@ -23,7 +22,7 @@ export class HeroService {
     this.heroesUrl = globalData.api_url + this.heroesUrl;
   }
 
-  getHeroes(): Promise<Hero[]> {
+  getHeroesOld(): Promise<Hero[]> {
     // toPromise操作符把Observable直接转换成Promise对象
     /*return this.http.get(this.heroesUrl).toPromise()
       .then(response => response.json() as Hero[])
@@ -36,7 +35,7 @@ export class HeroService {
     ).toPromise() as Promise<Hero[]>;
   }
 
-  getHeroesNew(): Observable<Hero[]> {
+  getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(_ => this.log('fetched heroes')),
@@ -49,7 +48,7 @@ export class HeroService {
     return Promise.reject(error.message || error);
   }
 
-  getHeroNew(id: number): Observable<{} | Hero> {
+  getHeroNew(id: number | string): Observable<{} | Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
@@ -57,7 +56,14 @@ export class HeroService {
     );
   }
 
-  getHero(id: number): Promise<Hero> {
+  getHero(id: number | string) {
+    return this.getHeroes().pipe(
+      // (+) before `id` turns the string into a number
+      map((heroes: Hero[]) => heroes.find(hero => hero.id === +id))
+    );
+  }
+
+  getHeroOld(id: number): Promise<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url).toPromise()
       .then()
@@ -96,12 +102,12 @@ export class HeroService {
   getHeroesSlowly(): Promise<Hero[]> {
     return new Promise(resolve => {
       // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getHeroes()), 2000);
+      setTimeout(() => resolve(this.getHeroesOld()), 2000);
     });
   }
 
   getHero2(id: number): Promise<Hero> {
-    return this.getHeroes().then(heroes => heroes.find(hero => hero.id === id));
+    return this.getHeroesOld().then(heroes => heroes.find(hero => hero.id === id));
   }
 
   /**

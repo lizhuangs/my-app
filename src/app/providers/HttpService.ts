@@ -3,10 +3,6 @@
  */
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/operator/toPromise';
-import { Observable } from 'rxjs/Observable';
-import { TimeoutError } from 'rxjs/util/TimeoutError';
-import 'rxjs/add/operator/timeout';
 import { Utils } from './Utils';
 import { GlobalData } from './GlobalData';
 import { BASE_URL, REQUEST_TIMEOUT } from './Constants';
@@ -37,7 +33,7 @@ export class HttpService {
         params: new HttpParams({ fromObject: params }),
         headers: new HttpHeaders(options['header']),
         responseType: type
-      }).timeout(3000).debounceTime(300).distinctUntilChanged().pipe();
+      }).pipe();
     /* .subscribe(
       value => {
         console.log('Post call successful value returned in body', value);

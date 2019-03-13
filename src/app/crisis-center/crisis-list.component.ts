@@ -1,15 +1,13 @@
-import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-
-import { Observable } from 'rxjs/Observable';
-
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { Crisis, CrisisService } from './crisis.service';
 
 @Component({
   template: `
     <ul class="items">
-      <li *ngFor="let crisis of crises | async"
+      <li *ngFor="let crisis of crises$ | async"
         (click)="onSelect(crisis)"
         [class.selected]="isSelected(crisis)">
           <span class="badge">{{ crisis.id }}</span>
@@ -21,7 +19,7 @@ import { Crisis, CrisisService } from './crisis.service';
   `
 })
 export class CrisisListComponent implements OnInit {
-  crises: Observable<Crisis[]>;
+  crises$: Observable<Crisis[]>;
   selectedId: number;
 
   constructor(
@@ -35,11 +33,16 @@ export class CrisisListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.crises = this.route.paramMap
-      .switchMap((params: ParamMap) => {
+    /* this.crises = this.route.paramMap.switchMap((params: ParamMap) => {
         this.selectedId = +params.get('id');
         return this.service.getCrises();
-      });
+      }); */
+    this.crises$ = this.route.paramMap.pipe(
+      switchMap(params => {
+        this.selectedId = +params.get('id');
+        return this.service.getCrises();
+      })
+    );
   }
 
   onSelect(crisis: Crisis) {

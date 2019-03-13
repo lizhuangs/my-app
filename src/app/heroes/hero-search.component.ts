@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-
+import { Observable, Subject } from 'rxjs';
+import {
+  debounceTime, distinctUntilChanged, switchMap
+} from 'rxjs/operators';
 // Observable class extensions
-import 'rxjs/add/observable/of';
+// import 'rxjs/add/observable/of';
 /*
 你可能并不熟悉这种import 'rxjs/add/...'语法，它缺少了花括号中的导入列表：{...}。
 这是因为我们并不需要操作符本身，这种情况下，我们所做的其实是导入这个库，加载并运行其中的脚本.
 它会把操作符添加到Observable类中。
 */
-// Observable operators
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
 
 import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
@@ -26,7 +22,7 @@ import { Hero } from './hero';
   providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
-  heroes: Observable<{} | Hero[]>;
+  heroes$: Observable<{} | Hero[]>;
   private searchTerms = new Subject<string>();
 
   constructor(
@@ -57,19 +53,24 @@ export class HeroSearchComponent implements OnInit {
     switchMap()会为每个从debounce和distinctUntilChanged中通过的搜索词调用搜索服务。
     它会取消并丢弃以前的搜索可观察对象，只保留最近的。
      */
-    this.heroes = this.searchTerms
-      .debounceTime(300)        // wait 300ms after each keystroke before considering the term
-      .distinctUntilChanged()   // ignore if next search term is same as previous
-      .switchMap(term => term   // switch to new observable each time the term changes
-        // return the http search observable
+    /* this.heroes = this.searchTerms
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term => term
         ? this.heroSearchService.search(term)
-        // or the observable of empty heroes if there was no search term
         : Observable.of<Hero[]>([]))
       .catch(error => {
-        // TODO: add real error handling
         console.log(error);
         return Observable.of<Hero[]>([]);
-      });
+      }); */
+    this.heroes$ = this.searchTerms.pipe(
+      // wait 300ms after each keystroke before considering the term
+      debounceTime(300),
+      // ignore new term if same as previous term
+      distinctUntilChanged(),
+      // switch to new search observable each time the term changes
+      switchMap((term: string) => this.heroSearchService.search(term)),
+    );
   }
 
   gotoDetail(hero: Hero): void {
