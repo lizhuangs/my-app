@@ -39,10 +39,12 @@ export class CrisisDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // 注意看这个里面的_value的值。
+    // console.log(this.route.data);
     this.route.data
-      .subscribe((data: { crisis: Crisis }) => {
-        this.editName = data.crisis.name;
-        this.crisis = data.crisis;
+      .subscribe((data: { crisisDetail: Crisis }) => {
+        this.editName = data.crisisDetail.name;
+        this.crisis = data.crisisDetail;
       });
   }
 

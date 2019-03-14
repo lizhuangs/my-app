@@ -17,7 +17,8 @@ export class CrisisDetailResolver implements Resolve<Crisis> {
     return this.cs.getCrisis(id).then(crisis => {
       if (crisis) {
         return crisis;
-      } else { // id not found
+      } else {
+        // id not found，注意看浏览器地址栏
         this.router.navigate(['/crisis-center']);
         return null;
       }

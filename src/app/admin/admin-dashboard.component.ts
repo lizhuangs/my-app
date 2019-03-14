@@ -25,8 +25,7 @@ export class AdminDashboardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private preloadStrategy: SelectivePreloadingStrategy
-  ) {
+    private preloadStrategy: SelectivePreloadingStrategy) {
     this.modules = preloadStrategy.preloadedModules;
   }
 

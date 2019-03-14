@@ -13,6 +13,10 @@ import { Crisis, CrisisService } from './crisis.service';
           <span class="badge">{{ crisis.id }}</span>
           {{ crisis.name }}
       </li>
+      <li  (click)="onSelect(this.cs)">
+          <span class="badge">100</span>
+         404
+      </li>
     </ul>
 
     <router-outlet></router-outlet>
@@ -20,6 +24,7 @@ import { Crisis, CrisisService } from './crisis.service';
 })
 export class CrisisListComponent implements OnInit {
   crises$: Observable<Crisis[]>;
+  cs: Crisis = new Crisis(404, 'not found');
   selectedId: number;
 
   constructor(
