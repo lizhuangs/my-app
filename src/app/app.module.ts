@@ -23,6 +23,8 @@ import {HttpService} from './providers/HttpService';
 import {HttpClientModule} from '@angular/common/http';
 import {MessageService} from './message.service';
 import {HeroService} from './heroes/hero.service';
+import {InMemoryDataService} from "./in-memory-data.service";
+import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 
 @NgModule({
   declarations: [
@@ -40,8 +42,11 @@ import {HeroService} from './heroes/hero.service';
     HeroFormModule,
     HttpFormModule,
     LoginRoutingModule,
-    // InMemoryWebApiModule将Http客户端默认的后端服务,替换成了内存 Web API服务
-    // InMemoryWebApiModule.forRoot(InMemoryDataService),
+    /*InMemoryWebApiModule将Http客户端默认的后端服务,替换成了内存 Web API服务
+    * 它会忽略域名以兼容现有的http请求，并且=号实际是like操作*/
+    /*HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),*/
     AppRoutingModule
     /*  RouterModule.forRoot([
        {

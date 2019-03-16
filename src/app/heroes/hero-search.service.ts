@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class HeroSearchService {
-  private search_hero_url = '/api/heroes/?name=';  // URL to web api
+  private search_hero_url = '/api/heroes';  // URL to web api
   constructor(
     private http: HttpClient, globalData: GlobalData, private messageService: MessageService) {
     this.search_hero_url = globalData.api_url + this.search_hero_url;

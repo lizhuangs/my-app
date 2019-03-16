@@ -33,7 +33,6 @@ export class HeroSearchComponent implements OnInit {
   Subject（主题）是一个可观察的事件流中的生产者。
   searchTerms生成一个产生字符串的Observable，
   用作按名称搜索时的过滤条件。
-  Each call to search() puts a new string into this subject's observable stream by calling next().
   每当调用search()时都会调用next()来把新的字符串放进该主题的可观察流中。
   */
   // Push a search term into the observable stream.
@@ -53,22 +52,9 @@ export class HeroSearchComponent implements OnInit {
     switchMap()会为每个从debounce和distinctUntilChanged中通过的搜索词调用搜索服务。
     它会取消并丢弃以前的搜索可观察对象，只保留最近的。
      */
-    /* this.heroes = this.searchTerms
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => term
-        ? this.heroSearchService.search(term)
-        : Observable.of<Hero[]>([]))
-      .catch(error => {
-        console.log(error);
-        return Observable.of<Hero[]>([]);
-      }); */
     this.heroes$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
       debounceTime(300),
-      // ignore new term if same as previous term
       distinctUntilChanged(),
-      // switch to new search observable each time the term changes
       switchMap((term: string) => this.heroSearchService.search(term)),
     );
   }
