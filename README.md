@@ -6,22 +6,26 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Todo List:
+以下排名不分先后看兴趣定，如果时间充足可以先写一个简单的框架出来  
+专心研究后台技能提升上，时间要花在刀刃上
+- [x] 基本框架搭建
+- [ ] 改善项目
+   - [ ] 日志研究
+   - [ ] 嵌套路由学习
+   - [ ] 样式绑定
+   - [ ] 表单验证（先学样式绑定和事件）
+   - [ ] 事件学习
+   - [ ] 通用CSS提取
+   - [ ] 打包部署和页面刷新问题
+   - [ ] 父子页面传参
+   - [ ] 通用HTTP和拦截器
+   - [ ] 动画（头像圆形自转）
+   - [ ] 自动测试
+   - [ ] 多环境开发和打包
+- [ ] 后期任务
+   - [ ] 待定
