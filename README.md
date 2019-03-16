@@ -27,5 +27,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
    - [ ] 动画（头像圆形自转）
    - [ ] 自动测试
    - [ ] 多环境开发和打包
+   - [ ] 自定义组件table学习研究
 - [ ] 后期任务
    - [ ] 待定
