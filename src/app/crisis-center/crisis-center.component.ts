@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   template: `
     <h2>CRISIS CENTER</h2>
+    <a routerLink="test">test</a>
     <router-outlet></router-outlet>
   `
 })

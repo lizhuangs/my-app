@@ -1,15 +1,19 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { CrisisCenterHomeComponent } from './crisis-center-home.component';
-import { CrisisListComponent } from './crisis-list.component';
-import { CrisisCenterComponent } from './crisis-center.component';
-import { CrisisDetailComponent } from './crisis-detail.component';
+import {CrisisCenterHomeComponent} from './crisis-center-home.component';
+import {CrisisListComponent} from './crisis-list.component';
+import {CrisisCenterComponent} from './crisis-center.component';
+import {CrisisDetailComponent} from './crisis-detail.component';
 
-import { CanDeactivateGuard } from '../providers/can-deactivate-guard.service';
-import { CrisisDetailResolver } from './crisis-detail-resolver.service';
+import {CanDeactivateGuard} from '../providers/can-deactivate-guard.service';
+import {CrisisDetailResolver} from './crisis-detail-resolver.service';
 
 const crisisCenterRoutes: Routes = [
+  {
+    path: 'test',//必须在默认path: ''之前声明才有效，页面使用相对路径<a routerLink="test">test</a>
+    component: CrisisDetailComponent
+  },
   {
     path: '',
     component: CrisisCenterComponent,
@@ -49,7 +53,8 @@ const crisisCenterRoutes: Routes = [
     CrisisDetailResolver
   ]
 })
-export class CrisisCenterRoutingModule { }
+export class CrisisCenterRoutingModule {
+}
 
 
 /*

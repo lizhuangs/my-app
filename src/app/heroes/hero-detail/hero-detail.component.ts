@@ -1,10 +1,7 @@
-// Keep the Input import for now, you'll remove it later:
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Location } from '@angular/common';
 import { HeroService } from '../hero.service';
 import { Hero } from '../hero';
-import { switchMap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { slideInDownAnimation } from '../../animations';
 @Component({
@@ -15,9 +12,9 @@ import { slideInDownAnimation } from '../../animations';
 })
 
 export class HeroDetailComponent implements OnInit {
-  @HostBinding('@routeAnimation') routeAnimation = true;
-  @HostBinding('style.display') display = 'block';
-  //@HostBinding('style.position') position = 'absolute';
+  /*@HostBinding('@routeAnimation') routeAnimation = true;
+  @HostBinding('style.display') display = 'block';*/
+  //@HostBinding('style.position') position = 'absolute';这个会导致页面错位
   hero: Hero;
   constructor(
     private heroService: HeroService,
@@ -60,8 +57,8 @@ export class HeroDetailComponent implements OnInit {
   }
 
   goBack(): void {
-    this.gotoHeroes();
-    // this.location.back();
+    //this.gotoHeroes();
+    this.location.back();
   }
 
   onKeyUpEnter(name: string): void {

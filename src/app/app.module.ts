@@ -1,11 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-// Imports for loading & configuring the in-memory web api
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import {InMemoryDataService} from './in-memory-data.service';
 import {PageNotFoundComponent} from './not-found.component';
 import {HeroesModule} from './heroes/heroes.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -25,7 +21,8 @@ import {MessageService} from './common/message/message.service';
 import {HeroService} from './heroes/hero.service';
 import {InMemoryDataService} from "./providers/in-memory-data.service";
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
-import { MessageComponent } from './common/message/message.component';
+import {MessageComponent} from './common/message/message.component';
+import {NgModule} from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -64,9 +61,11 @@ import { MessageComponent } from './common/message/message.component';
     Utils,
     GlobalData,
     Logger,
-    MessageService],
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {// Diagnostic only: inspect router configuration
   constructor(router: Router) {
     // console.log('Routes: ', JSON.stringify(router.config, undefined, 2));

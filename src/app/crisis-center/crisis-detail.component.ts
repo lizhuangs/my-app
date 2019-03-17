@@ -27,7 +27,7 @@ import { DialogService } from '../providers/dialog.service';
 export class CrisisDetailComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
-  @HostBinding('style.position') position = 'absolute';
+  // @HostBinding('style.position') position = 'absolute';
 
   crisis: Crisis;
   editName: string;

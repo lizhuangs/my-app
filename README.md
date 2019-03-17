@@ -1,3 +1,13 @@
+<!-- 很遗憾很多软件不支持toc标签
+[TOC] 
+-->
+<!-- TOC -->
+- [MY-APP](#my-app)
+    - [Development server](#development-server)
+    - [Build](#build)
+    - [Todo List:](#todo-list)
+<!-- /TOC -->
+
 # MY-APP
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) 
@@ -15,21 +25,21 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 专心研究后台技能提升上，时间要花在刀刃上
 - [x] 基本框架搭建
 - [ ] 改善项目
-   - [ ] 日志研究
-   - [ ] 嵌套路由学习
-   - [ ] 样式绑定
-   - [ ] 表单验证（先学样式绑定和事件）
-   - [ ] 事件学习
-   - [ ] 通用CSS提取
-   - [ ] 打包部署和页面刷新问题
-   - [ ] 父子页面传参
+   - [x] 日志研究
+   - [ ] 路由、面包屑实现
+   - [ ] Rxjs
    - [ ] 通用HTTP和拦截器
+   - [ ] 组件与模板、生命周期
+   - [ ] 样式绑定
+   - [ ] 父子页面传参
+   - [ ] 事件学习
+   - [ ] 表单验证（先学样式绑定和事件）
+   - [ ] 通用CSS提取
+   - [ ] 自定义组件table学习研究
+   - [ ] 打包部署和页面刷新问题
    - [ ] 动画（头像圆形自转）
    - [ ] 自动测试
    - [ ] 多环境开发和打包
-   - [ ] 自定义组件table学习研究
    - [ ] Promise
-   - [ ] Rxjs
-   - [ ] 组件与模板、生命周期
 - [ ] 后期任务
    - [ ] 待定

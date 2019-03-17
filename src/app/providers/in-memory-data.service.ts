@@ -2,6 +2,10 @@ import {InMemoryDbService} from 'angular-in-memory-web-api';
 import {Hero} from '../heroes/hero';
 import {Injectable} from '@angular/core';
 
+/*
+providedIn在根上导入的服务是全局单例的，可以惰性加载和摇树优化
+你也可以在根路由中forRoot代替，但是它无法摇树优化
+* */
 @Injectable({
   providedIn: 'root',
 })
