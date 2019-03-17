@@ -5,7 +5,7 @@ import { HEROES } from './mock-heroes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GlobalData } from '../providers/GlobalData';
 import { catchError, tap } from 'rxjs/operators';
-import { MessageService } from '../message.service';
+import { MessageService } from '../common/message/message.service';
 import { HttpService } from '../providers/HttpService';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';

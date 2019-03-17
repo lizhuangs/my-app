@@ -28,5 +28,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
    - [ ] 自动测试
    - [ ] 多环境开发和打包
    - [ ] 自定义组件table学习研究
+   - [ ] Promise
+   - [ ] Rxjs
+   - [ ] 组件与模板、生命周期
 - [ ] 后期任务
    - [ ] 待定

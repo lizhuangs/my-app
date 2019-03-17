@@ -9,8 +9,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {PageNotFoundComponent} from './not-found.component';
 import {HeroesModule} from './heroes/heroes.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DialogService} from './dialog.service';
-import {ComposeMessageComponent} from './compose-message.component';
+import {DialogService} from './providers/dialog.service';
+import {ComposeMessageComponent} from './common/compose-message/compose-message.component';
 import {Router} from '@angular/router';
 import {LoginComponent} from './login.component';
 import {LoginRoutingModule} from './login-routing.module';
@@ -21,17 +21,19 @@ import {GlobalData} from './providers/GlobalData';
 import {Logger} from './providers/Logger';
 import {HttpService} from './providers/HttpService';
 import {HttpClientModule} from '@angular/common/http';
-import {MessageService} from './message.service';
+import {MessageService} from './common/message/message.service';
 import {HeroService} from './heroes/hero.service';
-import {InMemoryDataService} from "./in-memory-data.service";
+import {InMemoryDataService} from "./providers/in-memory-data.service";
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
+import { MessageComponent } from './common/message/message.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     ComposeMessageComponent,
-    LoginComponent
+    LoginComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

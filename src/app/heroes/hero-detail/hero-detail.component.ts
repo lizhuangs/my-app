@@ -1,12 +1,12 @@
 // Keep the Input import for now, you'll remove it later:
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Location } from '@angular/common';
-import { HeroService } from './hero.service';
-import { Hero } from './hero';
+import { HeroService } from '../hero.service';
+import { Hero } from '../hero';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { slideInDownAnimation } from '../animations';
+import { slideInDownAnimation } from '../../animations';
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
@@ -17,7 +17,7 @@ import { slideInDownAnimation } from '../animations';
 export class HeroDetailComponent implements OnInit {
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display') display = 'block';
-  @HostBinding('style.position') position = 'absolute';
+  //@HostBinding('style.position') position = 'absolute';
   hero: Hero;
   constructor(
     private heroService: HeroService,

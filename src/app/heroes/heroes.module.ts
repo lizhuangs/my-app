@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { HeroesComponent } from './heroes.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 import { HeroService } from './hero.service';
 import { HeroRoutingModule } from './heroes-routing.module';
-import { HeroSearchComponent } from './hero-search.component';
-import { DashboardComponent } from './dashboard.component';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 @NgModule({
   imports: [
     CommonModule,

@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Hero } from './hero';
-import { GlobalData } from '../providers/GlobalData';
+import { Hero } from '../hero';
+import { GlobalData } from '../../providers/GlobalData';
 import { catchError, map, tap } from 'rxjs/operators';
-import { MessageService } from '../message.service';
+import { MessageService } from '../../common/message/message.service';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 

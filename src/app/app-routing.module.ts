@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './not-found.component';
-import { CrisisListComponent } from './crisis-center/crisis-list.component';
-import { ComposeMessageComponent } from './compose-message.component';
-import { CanDeactivateGuard } from './can-deactivate-guard.service';
-import { AuthGuard } from './auth-guard.service';
-import { SelectivePreloadingStrategy } from './selective-preloading-strategy';
+import { ComposeMessageComponent } from './common/compose-message/compose-message.component';
+import { CanDeactivateGuard } from './providers/can-deactivate-guard.service';
+import { AuthGuard } from './providers/auth-guard.service';
+import { SelectivePreloadingStrategy } from './providers/selective-preloading-strategy';
 const routes: Routes = [
   {
     path: 'compose',

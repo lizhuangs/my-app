@@ -1,19 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
-// Observable class extensions
-// import 'rxjs/add/observable/of';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Observable, Subject} from 'rxjs';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 /*
 你可能并不熟悉这种import 'rxjs/add/...'语法，它缺少了花括号中的导入列表：{...}。
 这是因为我们并不需要操作符本身，这种情况下，我们所做的其实是导入这个库，加载并运行其中的脚本.
 它会把操作符添加到Observable类中。
 */
 
-import { HeroSearchService } from './hero-search.service';
-import { Hero } from './hero';
+import {HeroSearchService} from './hero-search.service';
+import {Hero} from '../hero';
 
 @Component({
   selector: 'hero-search',
@@ -27,7 +23,8 @@ export class HeroSearchComponent implements OnInit {
 
   constructor(
     private heroSearchService: HeroSearchService,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   /*
   Subject（主题）是一个可观察的事件流中的生产者。
@@ -35,7 +32,6 @@ export class HeroSearchComponent implements OnInit {
   用作按名称搜索时的过滤条件。
   每当调用search()时都会调用next()来把新的字符串放进该主题的可观察流中。
   */
-  // Push a search term into the observable stream.
   search(term: string): void {
     this.searchTerms.next(term);
   }

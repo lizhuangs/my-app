@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { slideInDownAnimation } from '../animations';
 import { Crisis } from './crisis.service';
-import { DialogService } from '../dialog.service';
+import { DialogService } from '../providers/dialog.service';
 
 @Component({
   template: `
