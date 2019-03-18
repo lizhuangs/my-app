@@ -12,20 +12,30 @@ const CRISES = [
 let crisesPromise = Promise.resolve(CRISES);
 
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class CrisisService {
 
   static nextCrisisId = 100;
-
-  getCrises() { return crisesPromise; }
+  private crises$: BehaviorSubject<Crisis[]> = new BehaviorSubject<Crisis[]>(CRISES);
+  getCrises() { return this.crises$; }
 
   getCrisis(id: number | string) {
+    return this.getCrises().pipe(
+      map(crises => crises.find(crisis => crisis.id === +id))
+    );
+  }
+
+  getCrises2() { return crisesPromise; }
+
+  getCrisis2(id: number | string) {
     return crisesPromise
       .then(crises => crises.find(crisis => crisis.id === +id));
   }
 
-  addCrisis(name: string) {
+  addCrisis2(name: string) {
     name = name.trim();
     if (name) {
       let crisis = new Crisis(CrisisService.nextCrisisId++, name);

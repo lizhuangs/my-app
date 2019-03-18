@@ -1,13 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-
 import {CrisisCenterHomeComponent} from './crisis-center-home.component';
 import {CrisisListComponent} from './crisis-list.component';
 import {CrisisCenterComponent} from './crisis-center.component';
 import {CrisisDetailComponent} from './crisis-detail.component';
-
 import {CanDeactivateGuard} from '../providers/can-deactivate-guard.service';
-import {CrisisDetailResolver} from './crisis-detail-resolver.service';
+import {CrisisDetailResolverService} from './crisis-detail-resolver.service';
 
 const crisisCenterRoutes: Routes = [
   {
@@ -29,7 +27,7 @@ const crisisCenterRoutes: Routes = [
             // 预先获取组件数据 导航前预先加载路由信息，简单理解为过滤器
             // 好处1、当网络不好时不会显示空数据给用户 2、如果数据为空，可以提前处理而不用再跳转去渲染组件了
             resolve: {
-              crisisDetail: CrisisDetailResolver
+              crisisDetail: CrisisDetailResolverService
             }
           },
           {
@@ -49,8 +47,8 @@ const crisisCenterRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  providers: [
-    CrisisDetailResolver
+  providers:[
+    CrisisDetailResolverService
   ]
 })
 export class CrisisCenterRoutingModule {

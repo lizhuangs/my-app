@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {PageNotFoundComponent} from './not-found.component';
 import {HeroesModule} from './heroes/heroes.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DialogService} from './providers/dialog.service';
 import {ComposeMessageComponent} from './common/compose-message/compose-message.component';
 import {Router} from '@angular/router';
 import {LoginComponent} from './login.component';
@@ -55,7 +54,6 @@ import {NgModule} from '@angular/core';
      ]) */
   ],
   providers: [
-    DialogService,
     HttpService,
     HeroService,
     Utils,

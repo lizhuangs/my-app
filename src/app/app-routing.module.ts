@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './not-found.component';
 import { ComposeMessageComponent } from './common/compose-message/compose-message.component';
-import { CanDeactivateGuard } from './providers/can-deactivate-guard.service';
 import { AuthGuard } from './providers/auth-guard.service';
 import { SelectivePreloadingStrategy } from './providers/selective-preloading-strategy';
 const routes: Routes = [
@@ -46,7 +45,6 @@ const routes: Routes = [
   )],
   exports: [RouterModule],
   providers: [
-    CanDeactivateGuard,
     SelectivePreloadingStrategy
   ]
 })

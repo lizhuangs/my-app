@@ -29,7 +29,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - [x] 基本框架搭建
 - [ ] 改善项目
    - [x] 日志研究
-   - [ ] 路由、面包屑实现
+   - [ ] 路由
    - [ ] Rxjs
    - [ ] 通用HTTP和拦截器
    - [ ] 组件与模板、生命周期
@@ -44,5 +44,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
    - [ ] 自动测试
    - [ ] 多环境开发和打包
    - [ ] Promise
+   - [ ] 面包屑实现
 - [ ] 后期任务
    - [ ] 待定
