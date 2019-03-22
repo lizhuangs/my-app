@@ -9,7 +9,7 @@ import {CrisisDetailResolverService} from './crisis-detail-resolver.service';
 
 const crisisCenterRoutes: Routes = [
   {
-    path: 'test',//必须在默认path: ''之前声明才有效，页面使用相对路径<a routerLink="test">test</a>
+    path: 'test', // 必须在默认path: ''之前声明才有效，页面使用相对路径<a routerLink="test">test</a>
     component: CrisisDetailComponent
   },
   {

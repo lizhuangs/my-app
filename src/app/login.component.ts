@@ -34,12 +34,13 @@ export class LoginComponent {
         // Get the redirect URL from our auth service
         // If no redirect has been set, use the default
         let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/admin';
-        /*let navigationExtras: NavigationExtras = {
+        // 用于传递当前的查询参数和片段到下一个路由
+        let navigationExtras: NavigationExtras = {
           queryParamsHandling: 'preserve',
           preserveFragment: true
         };
-        this.router.navigate([redirect], navigationExtras);*/
-        this.router.navigate([redirect]);
+        this.router.navigate([redirect], navigationExtras);
+        // this.router.navigate([redirect]);
       }
     });
   }
