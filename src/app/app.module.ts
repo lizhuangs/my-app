@@ -18,7 +18,7 @@ import {HttpService} from './providers/HttpService';
 import {HttpClientModule} from '@angular/common/http';
 import {MessageService} from './common/message/message.service';
 import {HeroService} from './heroes/hero.service';
-import {InMemoryDataService} from "./providers/in-memory-data.service";
+import {InMemoryDataService} from './providers/in-memory-data.service';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {MessageComponent} from './common/message/message.component';
 import {NgModule} from '@angular/core';
