@@ -7,10 +7,6 @@ import {HeroesModule} from './heroes/heroes.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ComposeMessageComponent} from './common/compose-message/compose-message.component';
 import {Router} from '@angular/router';
-import {LoginComponent} from './login.component';
-import {LoginRoutingModule} from './login-routing.module';
-import {HeroFormModule} from './form/hero-form.module';
-import {HttpFormModule} from './http/http-form.module';
 import {Utils} from './providers/Utils';
 import {GlobalData} from './providers/GlobalData';
 import {Logger} from './providers/Logger';
@@ -28,7 +24,6 @@ import {NgModule} from '@angular/core';
     AppComponent,
     PageNotFoundComponent,
     ComposeMessageComponent,
-    LoginComponent,
     MessageComponent
   ],
   imports: [
@@ -37,9 +32,6 @@ import {NgModule} from '@angular/core';
     HttpClientModule,
     BrowserAnimationsModule,
     HeroesModule,
-    HeroFormModule,
-    HttpFormModule,
-    LoginRoutingModule,
     /*InMemoryWebApiModule将Http客户端默认的后端服务,替换成了内存 Web API服务
     * 它会忽略域名以兼容现有的http请求，并且=号实际是like操作*/
     /*HttpClientInMemoryWebApiModule.forRoot(

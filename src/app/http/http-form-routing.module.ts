@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpFormComponent } from './http-form.component';
 
 const routes: Routes = [
-  { path: 'http', component: HttpFormComponent }
+  { path: '', component: HttpFormComponent }
 ];
 
 @NgModule({

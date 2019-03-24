@@ -5,14 +5,20 @@ import { ComposeMessageComponent } from './common/compose-message/compose-messag
 import { AuthGuard } from './providers/auth-guard.service';
 import { SelectivePreloadingStrategy } from './providers/selective-preloading-strategy';
 const routes: Routes = [
+  /* 如果使用绝对路径/，那么模块必须放在src/app目录下 */
+  {
+    path: 'login',
+    loadChildren: './login.module#LoginModule'
+  },
   {
     path: 'compose',
     component: ComposeMessageComponent,
     outlet: 'popup'
   },
+  /* 相对路径 */
   {
     path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule',
+    loadChildren: './admin/admin.module#AdminModule',
     canLoad: [AuthGuard]
   },
   {
@@ -45,7 +51,9 @@ const routes: Routes = [
   )],
   exports: [RouterModule],
   providers: [
-    SelectivePreloadingStrategy
+    SelectivePreloadingStrategy,
+    /* 如果将AuthGuard放在其它 非异步 模块的路由中，这个路由必须在根路由之前定义，那么根路由这里也可以省略 */
+    AuthGuard
   ]
 })
 export class AppRoutingModule { }
