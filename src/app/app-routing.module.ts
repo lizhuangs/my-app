@@ -46,6 +46,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes,
     {
       preloadingStrategy: SelectivePreloadingStrategy
+      // HashLocationStrategy策略，一般用默认的H5风格
+      // , useHash: true
       // ,enableTracing: true //debugging purposes only
     }
   )],
